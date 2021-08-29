@@ -1,0 +1,10 @@
+<div class="grid" *ngFor="let item of blogs;let i = index" >
+    <div class="entry-body">
+        <h3><span class="cat">Title : <b>{{item.title}}</b></span></h3>
+        <h3>Subtitle : {{item.subtitle}}</h3>
+        <p class="font-italic text-muted mb-0 " style="word-break: break-word;">Content : {{item.content}}</p><br>
+        <p class="font-italic text-muted mb-0 " >Tag : {{item.tag}}</p>
+        <br>
+            <p class="font-italic text-muted mb-0 small">Post Created On : {{item.created_at}}</p>
+    </div>
+</div>

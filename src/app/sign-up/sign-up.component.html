@@ -1,0 +1,46 @@
+<div  ng-app="myApp" ng-controller="myController" >
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
+      <h1 class="h1Style"> Blogs For You </h1>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate >
+      <div  class="form-group" *ngIf="otherError" class="alert alert-danger text-center" style="padding-left: 0;">
+      {{errorMessage}}
+    </div>
+    <div *ngIf="successFlag" class="alert alert-success text-center" style="padding-left: 0;">
+      {{successMessage}}
+    </div>
+      <!-- <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"> -->
+      <input type="email" formControlName="email"   class="form-control fadeIn second" aria-describedby="emailHelp" placeholder="Enter email">
+        <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)" class="alert alert-danger form-error">
+          <small *ngIf="signupForm.controls['email'].errors.required" class="form-text text-muted">Email Id is required.</small>
+         </div>
+
+     <input type="password" id="password" class="form-control fadeIn third" formControlName="pass"  placeholder="Password">
+         <div *ngIf="signupForm.controls['pass'].invalid && (signupForm.controls['pass'].dirty || signupForm.controls['pass'].touched)" class="alert alert-danger form-error">
+           <small *ngIf="signupForm.controls['pass'].errors.required" class="form-text text-muted">Password Id is required.</small>
+         </div>
+      <!-- <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"> -->
+      <input type="password" id="confirm_password" class="form-control fadeIn third" formControlName="confirm_pass"  placeholder="Confirm Password">
+          <div *ngIf="signupForm.controls['confirm_pass'].invalid && (signupForm.controls['confirm_pass'].dirty || signupForm.controls['confirm_pass'].touched)" class="alert alert-danger form-error">
+            <small *ngIf="signupForm.controls['confirm_pass'].errors.required" class="form-text text-muted">Re enter Password  is required.</small>
+          </div>
+      <input type="submit" [disabled]="signupForm.pristine || signupForm.invalid"  class="fadeIn fourth" value="Sign Up Here">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" [routerLink]="['/login']" >Login</a>
+    </div>
+
+  </div>
+</div>
+</div>

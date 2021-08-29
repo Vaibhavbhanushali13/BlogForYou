@@ -1,0 +1,29 @@
+  <div  class="form-group" *ngIf="otherError" class="alert alert-danger text-center" style="padding-left: 0;">
+    {{errorMessage}}
+  </div>
+  <div *ngIf="successFlag" class="alert alert-success text-center" style="padding-left: 0;">
+    {{successMessage}}
+  </div>
+
+    <table class="table" style="text-align:center;" >
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Title</th>
+          <th scope="col">Sutitle</th>
+          <th scope="col">Content</th>
+          <th scope="col">Update</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of blogs;let i = index" >
+          <th scope="row">{{i+1}}</th>
+          <td><input type="text" id=title{{item.id}} value={{item.title}} /></td>
+          <td><input type="text" id=subtitle{{item.id}} value={{item.subtitle}} /></td>
+          <td><input type="text" id=content{{item.id}} value={{item.content}}   /></td>
+          <td><button (click)="updateBlog(item.id)">Update</button></td>
+          <td><button (click)="deleteBlog(item.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>

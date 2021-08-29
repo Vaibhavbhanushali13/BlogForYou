@@ -1,0 +1,33 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col  col-xs-12">
+	     <div  class="form-group" *ngIf="otherError" class="alert alert-danger text-center" style="padding-left: 0;">
+	      {{errorMessage}}
+	    </div>
+			<div class="dropdown" style="text-align:center">
+					<select  id="tags" (change)="filter($event.target.value)">
+				   <option value="" disabled selected>select a tag</option>
+					 <option value="all"  >all</option>
+				   <option *ngFor="let tagname of tags;let i = index" [value]="tagname" >{{tagname}}</option>
+				 </select>
+			  </div>
+	    <div class="blog-grids"  >
+	        <div class="grid" *ngFor="let item of blogs;let i = index" >
+	            <div class="entry-body">
+	                <h3><span class="cat">Title : <b>{{item.title}}</b></span></h3>
+	                <h3>Subtitle : {{item.subtitle}}</h3>
+	                <p class="font-italic text-muted mb-0 " style="word-break: break-word;">Content : {{item.content}}</p><br>
+									<p class="font-italic text-muted mb-0 " >Tag : {{item.tag}}</p>
+									<br>
+	                <div class="read-more-date">
+											<p class="font-italic text-muted mb-0 small">{{item.created_at}}</p>
+											<a (click)="setPostId(item.id)" target="_blank" style="cursor: pointer;">Read More ...</a>
+	                </div>
+	            </div>
+	        </div>
+
+	    </div>
+	</div>
+	</div>
+</div>

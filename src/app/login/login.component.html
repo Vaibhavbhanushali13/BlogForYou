@@ -1,0 +1,41 @@
+<div  ng-app="myApp" ng-controller="myController" >
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
+      <h1 class="h1Style"> Blogs For You </h1>
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate >
+      <div  class="form-group" *ngIf="otherError" class="alert alert-danger text-center" style="padding-left: 0;">
+      {{errorMessage}}
+    </div>
+    <div *ngIf="successFlag" class="alert alert-success text-center" style="padding-left: 0;">
+      {{successMessage}}
+    </div>
+      <!-- <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"> -->
+      <input type="email" formControlName="email"   class="form-control fadeIn second" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="alert alert-danger form-error">
+          <small *ngIf="loginForm.controls['email'].errors.required" class="form-text text-muted">Email Id is required.</small>
+         </div>
+      <!-- <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"> -->
+      <input type="password" id="password" class="form-control fadeIn third" formControlName="pass"  id="exampleInputPassword1" placeholder="Password">
+          <div *ngIf="loginForm.controls['pass'].invalid && (loginForm.controls['pass'].dirty || loginForm.controls['pass'].touched)" class="alert alert-danger form-error">
+            <small *ngIf="loginForm.controls['pass'].errors.required" class="form-text text-muted">Password Id is required.</small>
+          </div>
+      <input type="submit" [disabled]="loginForm.pristine || loginForm.invalid"  class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" [routerLink]="['/sign-up']" >SignUP</a>
+    </div>
+
+  </div>
+</div>
+</div>
